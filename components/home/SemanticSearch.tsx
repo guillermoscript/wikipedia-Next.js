@@ -10,7 +10,6 @@ import {
 } from "@/actions/homeActions";
 import { Button } from "../ui/button";
 import SearchResults from "./SearchResults";
-import { Card, CardContent } from "../ui/card";
 
 export default function SemanticSearch() {
 
@@ -52,38 +51,18 @@ export default function SemanticSearch() {
       {state.status === "error" && (
         <p className="text-red-500 dark:text-red-400">{state.message}</p>
       )}
-      {state.status === "success" && state?.data && (
-        <div className="flex flex-col gap-4">
-          <p className="text-gray-200 dark:text-gray-400">
-            {state.data &&
-              (state.data as SemanticSearchActionActionResponse).sumary}
-          </p>
-          <Card>
-            <CardContent>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {(state.data as SemanticSearchActionActionResponse).data.map(
-                  (result, index) => (
-                    <div
-                      key={index}
-                      className="bg-gray-800 dark:bg-gray-700 p-4 rounded-lg"
-                    >
-                      <h5 className="text-gray-200">
-                        Articles from {result?.title}
-                      </h5>
-                      {result?.response?.search?.map((search, index) => (
-                          <SearchResults
-                            key={index}
-                            title={search.title}
-                            description={search?.snippet}
-                            url={`/wiki/${search.title}`}
-                          />
-                      ))}
-                    </div>
-                  )
-                )}
-              </div>
-            </CardContent>
-          </Card>
+      {state.status === "success" && (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {(state.data as SemanticSearchActionActionResponse).data.map(
+            (result, index) => (
+              <SearchResults
+                key={index}
+                title={result.title}
+                description={result.excerpt}
+                url={`/wiki/${result.title}`}
+              />
+            )
+          )}
         </div>
       )}
     </>
