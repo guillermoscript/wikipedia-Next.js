@@ -299,6 +299,10 @@
   .mw-topbox p {
     @apply text-foreground;
   }
+
+  .mw-parser-output .ambox {
+    margin:  0 !important;
+  }
   
   /* Dark Mode support */
   
