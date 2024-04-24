@@ -90,7 +90,7 @@ export default function SearchArticles() {
 
   return (
     <>
-      <div className="relative flex items-center w-full mb-8">
+      <div className="relative flex items-center w-full pb-8">
         <SearchIcon className="absolute left-4 h-5 w-5 text-gray-500 dark:text-gray-400" />
         <Input
           className="w-full h-12 pl-12 pr-4 text-lg rounded-full shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:text-gray-200"
