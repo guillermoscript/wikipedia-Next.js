@@ -19,11 +19,11 @@ export default function Home() {
           defaultValue="simple"
           className="px-6 py-4 w-full container max-h-[80vh] overflow-y-auto z-10"
         >
-          <TabsList className="flex w-fit space-x-4 p-4 mx-auto">
+          <TabsList className="flex w-fit space-x-4  mx-auto">
             <TabsTrigger value="simple">Simple Search</TabsTrigger>
             <TabsTrigger value="semantic">AI Semantic Search</TabsTrigger>
           </TabsList>
-          <TabsContent value="simple">
+          <TabsContent className="p-0" value="simple">
             <SearchArticles />
           </TabsContent>
           <TabsContent value="semantic">

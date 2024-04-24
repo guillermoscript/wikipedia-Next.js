@@ -1,11 +1,24 @@
 "use client";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronUp, MenuIcon } from "lucide-react";
 import { Button } from "../ui/button";
 
 import { useChat } from "ai/react";
-import Markdown from "react-markdown";
 import { Textarea } from "../ui/textarea";
 import { useEffect, useState } from "react";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import AccordionWithButtons from "./AccordionWithButtons";
+import { questionsToAsk } from "@/lib/const";
+import { ChatRequestOptions, Message } from "ai";
 
 type Props = {
   articleTitle: string;
@@ -49,8 +62,7 @@ export default function MiniChat({
     return () => {
       window.removeEventListener("keydown", handleEsc);
     };
-  }
-  , []);
+  }, []);
 
   return (
     <div
@@ -63,16 +75,47 @@ export default function MiniChat({
         <span className="text-sm font-medium text-gray-800 dark:text-gray-100">
           ChatGPT
         </span>
-        <button
-          onClick={toggleChat}
-          className="p-2 rounded-full bg-transparent hover:bg-gray-200 dark:hover:bg-gray-700"
-        >
-          {isOpen ? (
-            <ChevronDown className="w-5 h-5 text-gray-600 dark:text-gray-300" />
-          ) : (
-            <ChevronUp className="w-5 h-5 text-gray-600 dark:text-gray-300" />
-          )}
-        </button>
+        <div className="flex items-center space-x-2">
+          <button
+            onClick={toggleChat}
+            className="p-2 rounded-full bg-transparent hover:bg-gray-200 dark:hover:bg-gray-700"
+          >
+            {isOpen ? (
+              <ChevronDown className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+            ) : (
+              <ChevronUp className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+            )}
+          </button>
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="outline">
+                <MenuIcon className="w-5 h-5 " />
+              </Button>
+            </SheetTrigger>
+            <SheetContent
+              side={"right"}
+              className="w-[400px] sm:w-[540px] lg:w-[640px] xl:w-[720px]"
+            >
+              <SheetHeader>
+                <SheetTitle>
+                  More Questions to ask depending on the topic
+                </SheetTitle>
+                <SheetDescription>
+                  Click on the question to ask the assistant
+                </SheetDescription>
+              </SheetHeader>
+              <ScrollArea className="h-[calc(100vh-20vh)]">
+                <AccordionWithButtons
+                  data={questionsToAsk(articleTitle)}
+                  setMessages={setMessages}
+                  reload={reload}
+                  articleTitle={articleTitle}
+                  articleContent={articleContent}
+                />
+              </ScrollArea>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
 
       {/* Content (Conditionally rendered based on the state) */}
@@ -82,35 +125,34 @@ export default function MiniChat({
           {messages.length === 0 && (
             <div className="p-4 space-y-4 overflow-auto max-h-[calc(100vh-4rem)] ">
               <div className="flex flex-wrap items-center gap-2">
-                <Button
-                  onClick={() => {
-                    // Add a message to the chat
-                    setMessages([
-                      {
-                        role: "system",
-                        content: `You are a expert in ${articleTitle}. This is the wikipedia article: ${articleContent}`,
-                        id: "1",
-                      },
-                      {
-                        role: "user",
-                        content: `Give me a summary of the article: ${articleTitle}`,
-                        id: "2",
-                      },
-                    ]);
-                    reload();
-                  }}
-                  className="rounded-full border"
-                  size="sm"
-                  variant="ghost"
-                >
-                  Give me a summary of this artile: &quot;{articleTitle}&quot;
-                </Button>
-                {/* <Button className="rounded-full border" size="sm" variant="ghost">
-                What are the best resources for learning React?
-              </Button>
-              <Button className="rounded-full border" size="sm" variant="ghost">
-                How can I improve my coding skills?
-              </Button> */}
+              <MessageButton 
+                userMessage="Give me a summary of the article: "
+                articleTitle={articleTitle}
+                articleContent={articleContent}
+                setMessages={setMessages}
+                reload={reload}
+              />
+              <MessageButton 
+                userMessage="Give me the key points of the article: "
+                articleTitle={articleTitle}
+                articleContent={articleContent}
+                setMessages={setMessages}
+                reload={reload}
+              />
+              <MessageButton 
+                userMessage="How do I cite the article: "
+                articleTitle={articleTitle}
+                articleContent={articleContent}
+                setMessages={setMessages}
+                reload={reload}
+                />
+              <MessageButton 
+                userMessage="Can you explain the article: "
+                articleTitle={articleTitle}
+                articleContent={articleContent}
+                setMessages={setMessages}
+                reload={reload}
+              />
               </div>
             </div>
           )}
@@ -151,5 +193,47 @@ export default function MiniChat({
         </div>
       )}
     </div>
+  );
+}
+
+function MessageButton({
+  userMessage,
+  articleTitle,
+  articleContent,
+  setMessages,
+  reload,
+}: {
+  userMessage: string;
+  articleTitle: string;
+  articleContent: string;
+  setMessages: (messages: Message[]) => void;
+  reload: (
+    chatRequestOptions?: ChatRequestOptions
+  ) => Promise<string | null | undefined>;
+}) {
+  return (
+    <Button
+      onClick={() => {
+        // Add a message to the chat
+        setMessages([
+          {
+            role: "system",
+            content: `You are a expert in ${articleTitle}. This is the wikipedia article: ${articleContent}`,
+            id: "1",
+          },
+          {
+            role: "user",
+            content: `${userMessage}${articleTitle}`,
+            id: "2",
+          },
+        ]);
+        reload();
+      }}
+      className="rounded-full border"
+      size="sm"
+      variant="ghost"
+    >
+      {userMessage}{articleTitle}
+    </Button>
   );
 }
