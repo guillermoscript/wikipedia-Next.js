@@ -27,7 +27,7 @@ export default function SearchResults({
       </CardHeader>
       <CardContent className="p-6">
         {children}
-        <p className="text-gray-500 dark:text-gray-400 mb-4">
+        <p className="text-gray-500 dark:text-gray-400 mb-4 line-clamp-3">
           {" "}
           {stripHtml(description)} {/* Stripping HTML here */}
         </p>
