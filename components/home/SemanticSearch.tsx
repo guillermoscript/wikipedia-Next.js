@@ -52,7 +52,14 @@ export default function SemanticSearch() {
         <p className="text-red-500 dark:text-red-400">{state.message}</p>
       )}
       {state.status === "success" && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="relative">
+          <h3 className="text-lg font-bold text-gray-300 dark:text-gray-400">
+            Search Results: {search}, {(state.data as SemanticSearchActionActionResponse)?.data.length} results
+          </h3>
+          <p className="text-gray-200 ">
+            {(state.data as SemanticSearchActionActionResponse)?.sumary}
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {(state.data as SemanticSearchActionActionResponse).data.map(
             (result, index) => (
               <SearchResults
@@ -63,6 +70,7 @@ export default function SemanticSearch() {
               />
             )
           )}
+        </div>
         </div>
       )}
     </>
