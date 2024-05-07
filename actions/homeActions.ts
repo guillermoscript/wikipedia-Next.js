@@ -67,7 +67,7 @@ export const SemanticSearchAction = async (prevData: any, formData: FormData) =>
         response_format: { type: "json_object" },
     });
 
-    const GPTResponse = JSON.parse(response.choices[0].message.content) as GPTResponse;
+    const GPTResponse = JSON.parse(response?.choices[0]?.message?.content) as GPTResponse;
 
     // for each of the obj title, call the wikipedia api to get the article, then return the title and the excerpt
     const endData = GPTResponse.data.map(async (obj) => {
