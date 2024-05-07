@@ -1,531 +1,581 @@
 @tailwind base;
-  @tailwind components;
-  @tailwind utilities;
+@tailwind components;
+@tailwind utilities;
 
 
-  @layer base {
-    :root {
-      --background: 0 0% 100%;
-      --foreground: 222.2 84% 4.9%;
-      --card: 0 0% 100%;
-      --card-foreground: 222.2 84% 4.9%;
-      --popover: 0 0% 100%;
-      --popover-foreground: 222.2 84% 4.9%;
-      --primary: 221.2 83.2% 53.3%;
-      --primary-foreground: 210 40% 98%;
-      --secondary: 210 40% 96.1%;
-      --secondary-foreground: 222.2 47.4% 11.2%;
-      --muted: 210 40% 96.1%;
-      --muted-foreground: 215.4 16.3% 46.9%;
-      --accent: 210 40% 96.1%;
-      --accent-foreground: 222.2 47.4% 11.2%;
-      --destructive: 0 84.2% 60.2%;
-      --destructive-foreground: 210 40% 98%;
-      --border: 214.3 31.8% 91.4%;
-      --input: 214.3 31.8% 91.4%;
-      --ring: 221.2 83.2% 53.3%;
-      --radius: 0.5rem;
-    }
-  
-    .dark {
-      --background: 222.2 84% 4.9%;
-      --foreground: 210 40% 98%;
-      --card: 222.2 84% 4.9%;
-      --card-foreground: 210 40% 98%;
-      --popover: 222.2 84% 4.9%;
-      --popover-foreground: 210 40% 98%;
-      --primary: 217.2 91.2% 59.8%;
-      --primary-foreground: 222.2 47.4% 11.2%;
-      --secondary: 217.2 32.6% 17.5%;
-      --secondary-foreground: 210 40% 98%;
-      --muted: 217.2 32.6% 17.5%;
-      --muted-foreground: 215 20.2% 65.1%;
-      --accent: 217.2 32.6% 17.5%;
-      --accent-foreground: 210 40% 98%;
-      --destructive: 0 62.8% 30.6%;
-      --destructive-foreground: 210 40% 98%;
-      --border: 217.2 32.6% 17.5%;
-      --input: 217.2 32.6% 17.5%;
-      --ring: 224.3 76.3% 48%;
-    }
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
   }
-  
 
-  @layer base {
-    * {
-      @apply border-border;
-    }
-    body {
-      @apply bg-background text-foreground;
-    }
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+  }
+}
+
+
+@layer base {
+  * {
+    @apply border-border;
   }
 
   body {
-    @apply bg-background text-foreground relative;
+    @apply bg-background text-foreground;
   }
-  
-  #mw_main,
-  #p-personal,
-  #mw_header,
-  .os-suggest {
-    @apply p-2;
-  }
-  
-  #mw_header {
-    @apply bg-primary;
-  }
-  
-  #mw_header h1 {
-    @apply text-2xl font-bold text-primary-foreground;
-  }
-  
-  #p-personal {
-    @apply bg-card;
-  }
-  
-  #p-personal div.pBody {
-    @apply p-2;
-  }
-  
-  #p-personal h5 {
-    @apply text-lg font-bold text-primary-foreground;
-  }
-  
-  #p-personal ul {
-    @apply list-none;
-  }
-  
-  #p-personal li {
-    @apply inline px-2;
-  }
-  
-  #p-personal li a {
-    @apply text-foreground hover:text-secondary-foreground;
-  }
-  
-  #p-personal li a:hover {
-    @apply text-accent;
-  }
-  
-  #p-personal li:hover {
-    @apply bg-secondary;
-  }
-  
-  #jump-to-nav {
-    @apply text-sm text-muted-foreground mb-3;
-  }
-  
-  #mw_contentwrapper {
-    @apply flex;
-  }
-  
-  #mw_content {
-    @apply w-full;
-  }
-  
-  #mw_portlets {
-    @apply w-1/4;
-  }
-  
-  #mw_main {
-    @apply flex-1;
-  }
-  
-  div.mw_clear {
-    @apply clear-both;
-  }
-  
-  .portlet {
-    @apply bg-card mt-4 p-5 shadow-md rounded-md;
-  }
-  
-  .portlet div.pBody {
-    @apply p-2;
-  }
-  
-  textarea {
-    @apply w-full border-input bg-input text-foreground;
-  }
-  
-  #searchBody {
-    @apply w-full;
-  }
-  
-  #searchInput {
-    @apply w-full border-input bg-input text-foreground;
-  }
-  
-  #p-search #searchform div div {
-    @apply p-2;
-  }
-  
-  .portlet h5 {
-    @apply text-lg font-bold text-primary-foreground mt-2;
-  }
-  
-  .portlet ul {
-    @apply list-none m-0;
-  }
-  
-  #mw_portlets .portlet ul {
-    @apply list-none;
-  }
-  
-  ul {
-    @apply list-none;
-  }
-  
-  #p-cactions {
-    @apply bg-card mt-4 p-5 shadow-md rounded-md;
-  }
-  
-  #p-cactions div.pBody {
-    @apply p-2;
-  }
-  
-  #p-cactions a,
-  #p-cactions a:hover {
-    @apply text-foreground;
-  }
-  
-  #p-cactions ul {
-    @apply list-none;
-  }
-  
-  #p-cactions li {
-    @apply inline px-2;
-  }
-  
-  #p-cactions li.selected {
-    @apply bg-accent;
-  }
-  
-  #p-cactions li a,
-  #p-cactions li a:hover,
-  #p-cactions li a:visited {
-    @apply text-primary underline-offset-4 hover:underline;
-  }
-  
-  #p-cactions li.selected a,
-  #p-cactions li.selected a:hover,
-  #p-cactions li.selected a:visited {
-    @apply text-primary underline-offset-4 hover:underline;
-  }
-  
-  #p-cactions h5 {
-    @apply text-lg font-bold text-primary-foreground;
-  }
-  
-  #siteSub {
-    @apply text-sm text-muted-foreground mb-3;
-  }
-  
-  #footer {
-    @apply bg-card mt-8 p-4 shadow-md rounded-md;
-  }
-  
-  #footer a,
-  #footer a:hover,
-  #footer a:visited {
-    @apply text-primary underline-offset-4 hover:underline;
-  }
-  
-  img {
-    @apply max-w-full;
-  }
-  
-  #footer li {
-    @apply inline px-2;
-  }
-  
-  #footer ul {
-    @apply list-none;
-  }
-  
-  p {
-    @apply mb-3;
-  }
-  
-  hr {
-    @apply border-gray-200 mt-3 mb-3;
-  }
-  
-  #contentSub {
-    @apply text-sm text-muted-foreground;
-  }
-  
-  #mw_portlets form {
-    @apply p-2;
-  }
-  
-  a {
-    @apply text-primary underline-offset-4 hover:underline
-  }
-  
-  a:visited {
-    @apply text-primary underline-offset-4 hover:underline
-  }
-  
-  a:active {
-    @apply text-primary;
-  }
-  
-  span.editsection {
-    @apply text-sm text-muted-foreground;
-  }
-  
-  h1,
-  h2 {
-    @apply font-bold;
-  }
-  
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply mb-2 mt-4;
-  }
-  
-  .usermessage {
-    @apply bg-accent p-4 rounded text-accent-foreground;
-  }
-  
-  .mw-topboxes {
-    @apply flex flex-col space-y-3;
-  }
-  
-  .mw-topbox p {
-    @apply text-foreground;
-  }
+}
 
-  .mw-parser-output .ambox {
-    margin:  0 !important;
-  }
-  
-  /* Dark Mode support */
-  
-  .dark body {
-    @apply bg-background text-foreground relative;
-  }
-  
-  .dark #mw_header {
-    @apply bg-primary;
-  }
-  
-  .dark #mw_header h1 {
-    @apply text-2xl font-bold text-primary-foreground;
-  }
-  
-  .dark #p-personal {
-    @apply bg-card;
-  }
-  
-  .dark #p-personal div.pBody {
-    @apply p-2;
-  }
-  
-  .dark #p-personal h5 {
-    @apply text-lg font-bold text-primary-foreground;
-  }
-  
-  .dark #p-personal ul {
-    @apply list-none;
-  }
-  
-  .dark #p-personal li {
-    @apply inline px-2;
-  }
-  
-  .dark #p-personal li a {
-    @apply text-foreground hover:text-secondary-foreground;
-  }
-  
-  .dark #p-personal li a:hover {
-    @apply text-accent;
-  }
-  
-  .dark #p-personal li:hover {
-    @apply bg-secondary;
-  }
-  
-  .dark #jump-to-nav {
-    @apply text-sm text-muted-foreground mb-3;
-  }
-  
-  .dark #mw_contentwrapper {
-    @apply flex;
-  }
-  
-  .dark #mw_content {
-    @apply w-full;
-  }
-  
-  .dark #mw_portlets {
-    @apply w-1/4;
-  }
-  
-  .dark #mw_main {
-    @apply flex-1;
-  }
-  
-  .dark div.mw_clear {
-    @apply clear-both;
-  }
-  
-  .dark .portlet {
-    @apply bg-card mt-4 p-5 shadow-md rounded-md;
-  }
-  
-  .dark .portlet div.pBody {
-    @apply p-2;
-  }
-  
-  .dark textarea {
-    @apply w-full border-input bg-input text-foreground;
-  }
-  
-  .dark #searchBody {
-    @apply w-full;
-  }
-  
-  .dark #searchInput {
-    @apply w-full border-input bg-input text-foreground;
-  }
-  
-  .dark #p-search #searchform div div {
-    @apply p-2;
-  }
-  
-  .dark .portlet h5 {
-    @apply text-lg font-bold text-primary-foreground mt-2;
-  }
-  
-  .dark .portlet ul {
-    @apply list-none m-0;
-  }
-  
-  .dark #p-cactions {
-    @apply bg-card mt-4 p-5 shadow-md rounded-md;
-  }
-  
-  .dark #p-cactions div.pBody {
-    @apply p-2;
-  }
-  
-  .dark #p-cactions a,
-  .dark #p-cactions a:hover {
-    @apply text-foreground;
-  }
-  
-  .dark #p-cactions ul {
-    @apply list-none;
-  }
-  
-  .dark #p-cactions li {
-    @apply inline px-2;
-  }
-  
-  .dark #p-cactions li.selected {
-    @apply bg-accent;
-  }
-  
-  .dark #p-cactions li a,
-  .dark #p-cactions li a:hover,
-  .dark #p-cactions li a:visited {
-    @apply text-primary underline-offset-4 hover:underline
-  }
-  
-  .dark #p-cactions li.selected a,
-  .dark #p-cactions li.selected a:hover,
-  .dark #p-cactions li.selected a:visited {
-    @apply text-primary underline-offset-4 hover:underline
-  }
-  
-  .dark #p-cactions h5 {
-    @apply text-lg font-bold text-primary-foreground;
-  }
-  
-  .dark #siteSub {
-    @apply text-sm text-muted-foreground mb-3;
-  }
-  
-  .dark #footer {
-    @apply bg-card mt-8 p-4 shadow-md rounded-md;
-  }
-  
-  .dark #footer a,
-  .dark #footer a:hover,
-  .dark #footer a:visited {
-    @apply text-primary underline-offset-4 hover:underline
-  }
-  
-  .dark img {
-    @apply max-w-full;
-  }
-  
-  .dark #footer li {
-    @apply inline px-2;
-  }
-  
-  .dark #footer ul {
-    @apply list-none;
-  }
-  
-  .dark p {
-    @apply mb-3;
-  }
-  
-  .dark hr {
-    @apply border-gray-200 mt-3 mb-3;
-  }
-  
-  .dark #contentSub {
-    @apply text-sm text-muted-foreground;
-  }
-  
-  .dark a {
-    @apply text-primary hover:text-primary-foreground;
-  }
-  
-  .dark a:visited {
-    @apply text-primary underline-offset-4 hover:underline
-  }
-  
-  .dark a:active {
-    @apply text-primary;
-  }
-  
-  .dark span.editsection {
-    @apply text-sm text-muted-foreground;
-  }
-  
-  .dark h1,
-  .dark h2 {
-    @apply font-bold;
-  }
-  
-  .dark h1,
-  .dark h2,
-  .dark h3,
-  .dark h4,
-  .dark h5,
-  .dark h6 {
-    @apply mb-2 mt-4;
-  }
-  
-  .dark .usermessage {
-    @apply bg-accent p-4 rounded text-accent-foreground;
-  }
-  
-  .dark .mw-topboxes {
-    @apply flex flex-col space-y-3;
-  }
-  
-  .dark .mw-topbox p {
-    @apply text-foreground;
-  }
+body {
+  @apply bg-background text-foreground relative;
+}
+
+#mw_main,
+#p-personal,
+#mw_header,
+.os-suggest {
+  @apply p-2;
+}
+
+#mw_header {
+  @apply bg-primary;
+}
+
+#mw_header h1 {
+  @apply text-2xl font-bold text-primary-foreground;
+}
+
+#p-personal {
+  @apply bg-card;
+}
+
+#p-personal div.pBody {
+  @apply p-2;
+}
+
+#p-personal h5 {
+  @apply text-lg font-bold text-primary-foreground;
+}
+
+#p-personal ul {
+  @apply list-none;
+}
+
+#p-personal li {
+  @apply inline px-2;
+}
+
+#p-personal li a {
+  @apply text-foreground hover:text-secondary-foreground;
+}
+
+#p-personal li a:hover {
+  @apply text-accent;
+}
+
+#p-personal li:hover {
+  @apply bg-secondary;
+}
+
+#jump-to-nav {
+  @apply text-sm text-muted-foreground mb-3;
+}
+
+#mw_contentwrapper {
+  @apply flex;
+}
+
+#mw_content {
+  @apply w-full;
+}
+
+#mw_portlets {
+  @apply w-1/4;
+}
+
+#mw_main {
+  @apply flex-1;
+}
+
+div.mw_clear {
+  @apply clear-both;
+}
+
+.portlet {
+  @apply bg-card mt-4 p-5 shadow-md rounded-md;
+}
+
+.portlet div.pBody {
+  @apply p-2;
+}
+
+textarea {
+  @apply w-full border-input bg-input text-foreground;
+}
+
+#searchBody {
+  @apply w-full;
+}
+
+#searchInput {
+  @apply w-full border-input bg-input text-foreground;
+}
+
+#p-search #searchform div div {
+  @apply p-2;
+}
+
+.portlet h5 {
+  @apply text-lg font-bold text-primary-foreground mt-2;
+}
+
+.portlet ul {
+  @apply list-none m-0;
+}
+
+#mw_portlets .portlet ul {
+  @apply list-none;
+}
+
+ul {
+  @apply list-none;
+}
+
+#p-cactions {
+  @apply bg-card mt-4 p-5 shadow-md rounded-md;
+}
+
+#p-cactions div.pBody {
+  @apply p-2;
+}
+
+#p-cactions a,
+#p-cactions a:hover {
+  @apply text-foreground;
+}
+
+#p-cactions ul {
+  @apply list-none;
+}
+
+#p-cactions li {
+  @apply inline px-2;
+}
+
+#p-cactions li.selected {
+  @apply bg-accent;
+}
+
+#p-cactions li a,
+#p-cactions li a:hover,
+#p-cactions li a:visited {
+  @apply text-primary underline-offset-4 hover:underline;
+}
+
+#p-cactions li.selected a,
+#p-cactions li.selected a:hover,
+#p-cactions li.selected a:visited {
+  @apply text-primary underline-offset-4 hover:underline;
+}
+
+#p-cactions h5 {
+  @apply text-lg font-bold text-primary-foreground;
+}
+
+#siteSub {
+  @apply text-sm text-muted-foreground mb-3;
+}
+
+#footer {
+  @apply bg-card mt-8 p-4 shadow-md rounded-md;
+}
+
+#footer a,
+#footer a:hover,
+#footer a:visited {
+  @apply text-primary underline-offset-4 hover:underline;
+}
+
+img {
+  @apply max-w-full;
+}
+
+#footer li {
+  @apply inline px-2;
+}
+
+#footer ul {
+  @apply list-none;
+}
+
+p {
+  @apply mb-3;
+}
+
+hr {
+  @apply border-gray-200 mt-3 mb-3;
+}
+
+#contentSub {
+  @apply text-sm text-muted-foreground;
+}
+
+#mw_portlets form {
+  @apply p-2;
+}
+
+a {
+  @apply text-primary underline-offset-4 hover:underline
+}
+
+a:visited {
+  @apply text-primary underline-offset-4 hover:underline
+}
+
+a:active {
+  @apply text-primary;
+}
+
+span.editsection {
+  @apply text-sm text-muted-foreground;
+}
+
+h1,
+h2 {
+  @apply font-bold;
+}
+
+h2 {
+  @apply border-b border-gray-200 pb-2;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply mb-2 mt-4;
+}
+
+.usermessage {
+  @apply bg-accent p-4 rounded text-accent-foreground;
+}
+
+.mw-topboxes {
+  @apply flex flex-col space-y-3;
+}
+
+.mw-topbox p {
+  @apply text-foreground;
+}
+
+.mw-parser-output .ambox {
+  margin: 0 !important;
+}
+
+/* .mw-editsection {
+    display: none;
+  } */
+.mw-content-ltr figure[typeof~='mw:File/Thumb'],
+.mw-content-ltr figure[typeof~='mw:File/Frame'] {
+  margin: 0.5em 0 1.3em 1.4em;
+  clear: right;
+  float: right
+}
+
+figure[typeof~="mw:File/Thumb"],
+figure[typeof~="mw:File/Frame"],
+.thumbinner {
+  background-color: #f9f9f9;
+  border: 1px solid #aaa;
+  padding: 0.2em;
+  margin: 0.5em 0.5em 0.5em 0.5em;
+  text-align: center
+}
+
+figure[typeof~="mw:File/Thumb"]>figcaption,
+figure[typeof~="mw:File/Frame"]>figcaption {
+  margin: 0.5em;
+  display: table-caption;
+  caption-side: bottom;
+  line-height: 1.4em;
+  word-break: break-word;
+  text-align: left;
+  padding: 0 6px 6px 6px;
+  width: fit-content;
+  font-size: 88.4%;
+}
+
+.infobox {
+  @apply bg-card p-4 shadow-md rounded-md;
+  border-spacing: 3px;
+  margin: 0.5em 0 0.5em 1em;
+  padding: 0.2em;
+  float: right;
+  clear: right;
+  font-size: 88%;
+  line-height: 1.5em;
+  width: fit-content;
+}
+
+/* Dark Mode support */
+
+.dark body {
+  @apply bg-background text-foreground relative;
+}
+
+.dark #mw_header {
+  @apply bg-primary;
+}
+
+.dark #mw_header h1 {
+  @apply text-2xl font-bold text-primary-foreground;
+}
+
+.dark #p-personal {
+  @apply bg-card;
+}
+
+.dark #p-personal div.pBody {
+  @apply p-2;
+}
+
+.dark #p-personal h5 {
+  @apply text-lg font-bold text-primary-foreground;
+}
+
+.dark #p-personal ul {
+  @apply list-none;
+}
+
+.dark #p-personal li {
+  @apply inline px-2;
+}
+
+.dark #p-personal li a {
+  @apply text-foreground hover:text-secondary-foreground;
+}
+
+.dark #p-personal li a:hover {
+  @apply text-accent;
+}
+
+.dark #p-personal li:hover {
+  @apply bg-secondary;
+}
+
+.dark #jump-to-nav {
+  @apply text-sm text-muted-foreground mb-3;
+}
+
+.dark #mw_contentwrapper {
+  @apply flex;
+}
+
+.dark #mw_content {
+  @apply w-full;
+}
+
+.dark #mw_portlets {
+  @apply w-1/4;
+}
+
+.dark #mw_main {
+  @apply flex-1;
+}
+
+.dark div.mw_clear {
+  @apply clear-both;
+}
+
+.dark .portlet {
+  @apply bg-card mt-4 p-5 shadow-md rounded-md;
+}
+
+.dark .portlet div.pBody {
+  @apply p-2;
+}
+
+.dark textarea {
+  @apply w-full border-input bg-input text-foreground;
+}
+
+.dark #searchBody {
+  @apply w-full;
+}
+
+.dark #searchInput {
+  @apply w-full border-input bg-input text-foreground;
+}
+
+.dark #p-search #searchform div div {
+  @apply p-2;
+}
+
+.dark .portlet h5 {
+  @apply text-lg font-bold text-primary-foreground mt-2;
+}
+
+.dark .portlet ul {
+  @apply list-none m-0;
+}
+
+.dark #p-cactions {
+  @apply bg-card mt-4 p-5 shadow-md rounded-md;
+}
+
+.dark #p-cactions div.pBody {
+  @apply p-2;
+}
+
+.dark #p-cactions a,
+.dark #p-cactions a:hover {
+  @apply text-foreground;
+}
+
+.dark #p-cactions ul {
+  @apply list-none;
+}
+
+.dark #p-cactions li {
+  @apply inline px-2;
+}
+
+.dark #p-cactions li.selected {
+  @apply bg-accent;
+}
+
+.dark #p-cactions li a,
+.dark #p-cactions li a:hover,
+.dark #p-cactions li a:visited {
+  @apply text-primary underline-offset-4 hover:underline
+}
+
+.dark #p-cactions li.selected a,
+.dark #p-cactions li.selected a:hover,
+.dark #p-cactions li.selected a:visited {
+  @apply text-primary underline-offset-4 hover:underline
+}
+
+.dark #p-cactions h5 {
+  @apply text-lg font-bold text-primary-foreground;
+}
+
+.dark #siteSub {
+  @apply text-sm text-muted-foreground mb-3;
+}
+
+.dark #footer {
+  @apply bg-card mt-8 p-4 shadow-md rounded-md;
+}
+
+.dark #footer a,
+.dark #footer a:hover,
+.dark #footer a:visited {
+  @apply text-primary underline-offset-4 hover:underline
+}
+
+.dark img {
+  @apply max-w-full;
+}
+
+.dark #footer li {
+  @apply inline px-2;
+}
+
+.dark #footer ul {
+  @apply list-none;
+}
+
+.dark p {
+  @apply mb-3;
+}
+
+.dark hr {
+  @apply border-gray-200 mt-3 mb-3;
+}
+
+.dark #contentSub {
+  @apply text-sm text-muted-foreground;
+}
+
+.dark a {
+  @apply text-primary hover:text-primary-foreground;
+}
+
+.dark a:visited {
+  @apply text-primary underline-offset-4 hover:underline
+}
+
+.dark a:active {
+  @apply text-primary;
+}
+
+.dark span.editsection {
+  @apply text-sm text-muted-foreground;
+}
+
+.dark h1,
+.dark h2 {
+  @apply font-bold;
+}
+
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 {
+  @apply mb-2 mt-4;
+}
+
+.dark .usermessage {
+  @apply bg-accent p-4 rounded text-accent-foreground;
+}
+
+.dark .mw-topboxes {
+  @apply flex flex-col space-y-3;
+}
+
+.dark .mw-topbox p {
+  @apply text-foreground;
+}
 
 
 /* Begin table styles */
@@ -542,7 +592,7 @@ table tbody tr:last-child {
 }
 
 
-table tbody tr:first-child  {
+table tbody tr:first-child {
   @apply bg-primary;
 }
 
@@ -555,7 +605,7 @@ table.nowraplinks.navbox-subgroup tbody tr:first-child {
 }
 
 table tfoot {
-  @apply border-t bg-muted  font-medium;
+  @apply border-t bg-muted font-medium;
 }
 
 table tfoot tr:last-child {
@@ -563,7 +613,7 @@ table tfoot tr:last-child {
 }
 
 table tr {
-  @apply border-b transition-colors hover:bg-muted ;
+  @apply border-b transition-colors hover:bg-muted;
 }
 
 table[data-state="selected"] tr {
@@ -571,7 +621,7 @@ table[data-state="selected"] tr {
 }
 
 table th {
-  @apply h-12 px-4 text-left align-middle font-medium 
+  @apply h-12 px-4 text-left align-middle font-medium
 }
 
 table td {
@@ -585,4 +635,5 @@ table th[role="checkbox"] {
 table td[role="checkbox"] {
   @apply pr-0;
 }
+
 /* End table styles */
