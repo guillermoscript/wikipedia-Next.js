@@ -12,7 +12,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { DarkThemeToggle } from "../DarkThemeToggle";
-import { createClient } from "@/lib/supabase/server";
 
 export default async function DashboardHeader() {
 	// const supabase = createClient();
@@ -31,7 +30,7 @@ export default async function DashboardHeader() {
 						<SearchIcon className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-500 dark:text-gray-400" />
 						<Input
 							className="w-full bg-white shadow-none appearance-none pl-8 md:w-2/3 lg:w-1/3 dark:bg-gray-950"
-							placeholder="Search lessons, courses, or students..."
+							placeholder="Search content"
 							type="search"
 						/>
 					</div>
